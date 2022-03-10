@@ -20,7 +20,7 @@ export const Img = props => {
     const stockStyles = {
         position: 'absolute',
         top: '.5rem',
-        right: '47rem',
+        right: '.5rem',
         fontSize: '2rem'
     }
 

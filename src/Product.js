@@ -11,12 +11,20 @@ export const Product = (props) => {
         stockLevel
     }= props.product
 
+    const cartFunctionality = (product) => {
+        if (product.addedToCart === true) {
+            props.removeFromCart(product);
+        }else {
+            props.addToCart(product);
+        }
+    };
+
 
 
     return (
         <article className="product">
             <h3>{name}</h3>
-            <div>
+            <div className="productImages">
                 {images.map(image => <Img key={image.imageId} image={image} stock={stockLevel} />)}
             </div>
             <p>
@@ -30,10 +38,10 @@ export const Product = (props) => {
             <p>&pound;{price}</p>
             <div className="promo-blocks__actions">
                 <a className="button--anchor">
-                Full Details
+                    Full Details
                 </a>        
-                <button>
-                Add to cart
+                <button onClick={()=>cartFunctionality(props.product)}>
+                    {props.product.addedToCart ? 'Remove from cart': 'Add to cart'}
                 </button>
             </div>            
         </article>
